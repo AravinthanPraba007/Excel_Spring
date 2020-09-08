@@ -40,7 +40,7 @@ public class FromToService {
 		
 //		2. Process the list of data
 		fromToList= processFormToData(lst_data);
-	
+		System.out.println(fromToList.toString());
 //		3. Covert the processed data into excel   
 		try {
 			ByteArrayInputStream in = fromToListToExcel(fromToList);
@@ -160,7 +160,7 @@ public class FromToService {
 				from_to.setTo(lst_data.get(0));
 				System.out.println(from_to.toString());
 				from_to_List.add(from_to);
-				System.out.println(from_to_List.toString());
+//				System.out.println(from_to_List.toString());
 				
 			}
 			int prev,current,from,to;
@@ -185,7 +185,7 @@ public class FromToService {
 					from_to.setTo(to);
 					System.out.println(from_to.toString());
 					from_to_List.add(from_to);
-					System.out.println(from_to_List.toString());
+//					System.out.println(from_to_List.toString());
 					from = current;
 					prev = current;
 				}
@@ -197,7 +197,7 @@ public class FromToService {
 			from_to.setTo(to);
 			System.out.println(from_to.toString());
 			from_to_List.add(from_to);
-			System.out.println(from_to_List.toString());
+//			System.out.println(from_to_List.toString());
 			return from_to_List;
 			
 		}
