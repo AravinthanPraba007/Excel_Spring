@@ -32,7 +32,7 @@ public class FromToService {
 //		1. Parse the excel to list of data
 		try {
 			lst_data = parseExcelFile(file.getInputStream());
-			System.out.println(lst_data.toString());
+//			System.out.println(lst_data.toString());
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -40,7 +40,7 @@ public class FromToService {
 		
 //		2. Process the list of data
 		fromToList= processFormToData(lst_data);
-		System.out.println(fromToList.toString());
+//		System.out.println(fromToList.toString());
 //		3. Covert the processed data into excel   
 		try {
 			ByteArrayInputStream in = fromToListToExcel(fromToList);
@@ -158,7 +158,7 @@ public class FromToService {
 				FromTo from_to = new FromTo();
 				from_to.setFrom(lst_data.get(0));
 				from_to.setTo(lst_data.get(0));
-				System.out.println(from_to.toString());
+//				System.out.println(from_to.toString());
 				from_to_List.add(from_to);
 //				System.out.println(from_to_List.toString());
 				
@@ -183,7 +183,7 @@ public class FromToService {
 					FromTo from_to = new FromTo();
 					from_to.setFrom(from);
 					from_to.setTo(to);
-					System.out.println(from_to.toString());
+//					System.out.println(from_to.toString());
 					from_to_List.add(from_to);
 //					System.out.println(from_to_List.toString());
 					from = current;
@@ -195,7 +195,7 @@ public class FromToService {
 			FromTo from_to = new FromTo();
 			from_to.setFrom(from);
 			from_to.setTo(to);
-			System.out.println(from_to.toString());
+//			System.out.println(from_to.toString());
 			from_to_List.add(from_to);
 //			System.out.println(from_to_List.toString());
 			return from_to_List;
