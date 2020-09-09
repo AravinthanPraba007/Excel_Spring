@@ -169,7 +169,7 @@ public class FromToService {
 			prev = lst_data.get(0);
 			from= lst_data.get(0);
 			
-			for(int i = 1; i < lst_data.size()-1 ;i++) {
+			for(int i = 1; i < lst_data.size() ;i++) {
 				current = lst_data.get(i);
 				
 //				1. current = prev+1
