@@ -22,7 +22,7 @@ public class FromToController {
 	@RequestMapping(value="/fromTo", method = RequestMethod.POST)
 	public ResponseEntity<InputStreamResource> uploadMultipartFile(@RequestParam("uploadfile") MultipartFile file) {
 		HttpHeaders headers = new HttpHeaders();
-      headers.add("Content-Disposition", "attachment; filename=customers.xlsx");
+      headers.add("Content-Disposition", "attachment; filename=output.xlsx");
 		
 		return ResponseEntity
               .ok()
