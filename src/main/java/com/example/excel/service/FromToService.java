@@ -26,7 +26,7 @@ import com.example.excel.model.FromTo;
 public class FromToService {
 
 	   public ByteArrayInputStream loadFile(MultipartFile file) {
-		   List<Integer> lst_data = new ArrayList<Integer>();
+		   List<Long> lst_data = new ArrayList<Long>();
 		   List<FromTo> fromToList = new ArrayList<FromTo>();
 		   
 //		1. Parse the excel to list of data
@@ -54,14 +54,14 @@ public class FromToService {
     }
 	  
 	 //Get the excel and convert them into list
-		public static List<Integer> parseExcelFile(InputStream is) {
+		public static List<Long> parseExcelFile(InputStream is) {
 		try {
    		Workbook workbook = new XSSFWorkbook(is);
     
    		Sheet sheet = workbook.getSheet("Sheet1");
    		Iterator<Row> rows = sheet.iterator();
    		
-   		List<Integer> values = new ArrayList<Integer>();
+   		List<Long> values = new ArrayList<Long>();
    		
    		int rowNumber = 0;
    		while (rows.hasNext()) {
@@ -75,7 +75,7 @@ public class FromToService {
    			
    			Iterator<Cell> cellsInRow = currentRow.iterator();
    			Cell currentCell = cellsInRow.next();
-   			int value= ((int) currentCell.getNumericCellValue());
+   			Long value= ((long) currentCell.getNumericCellValue());
    			
    			values.add(value);
 
@@ -139,7 +139,7 @@ public class FromToService {
 	}
 	
 	// Processing the from to data 
-		public List<FromTo> processFormToData(List<Integer> lst_data) {
+		public List<FromTo> processFormToData(List<Long> lst_data) {
 			
 			ArrayList<FromTo> from_to_List =new ArrayList<FromTo>();
 			
@@ -163,7 +163,7 @@ public class FromToService {
 //				System.out.println(from_to_List.toString());
 				
 			}
-			int prev,current,from,to;
+			Long prev,current,from,to;
 			
 //			Pick the first number and put in the first set from value 
 			prev = lst_data.get(0);
