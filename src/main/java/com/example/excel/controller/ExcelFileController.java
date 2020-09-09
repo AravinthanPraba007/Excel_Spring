@@ -8,7 +8,7 @@ public class ExcelFileController {
 
 	  @GetMapping("/")
 	    public String index() {
-	        return "multipartfile/uploadform.html";
+	        return "multipartfile/home.html";
 	    }
 	  
 	  @GetMapping("/fromTo")
