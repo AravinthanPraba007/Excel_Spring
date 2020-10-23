@@ -139,8 +139,8 @@ public class ClassificationDataService {
 				MaterialData materialData = material_datas.get(i);
 				currentData = materialData;
 
-				System.out.println(" previous data" + previousData.getMaterialId());
-				System.out.println(" current data" + currentData.getMaterialId());
+//				System.out.println(" previous data" + previousData.getMaterialId());
+//				System.out.println(" current data" + currentData.getMaterialId());
 
 				/**
 				 * 1. Check if currentData is not equal to previousData true -> 1.1.a Check if
@@ -151,7 +151,7 @@ public class ClassificationDataService {
 				if (!(currentData.getMaterialId()).equals(previousData.getMaterialId())) {
 					if (firstRow) {
 						firstRow = false;
-						System.out.println("Building header");
+//						System.out.println("Building header");
 						ArrayList<String> headerResultRowData = new ArrayList<String>();
 						headerResultRowData = buildHeader.header();
 						Row row = sheet.createRow(rowIdx++);
@@ -163,7 +163,7 @@ public class ClassificationDataService {
 					}
 
 					else {
-						System.out.println("Building section 3");
+//						System.out.println("Building section 3");
 						ArrayList<ArrayList<String>> section3Data = new ArrayList<ArrayList<String>>();
 						section3Data = buildSection3.section3(previousData);
 						for (ArrayList<String> resultRowData : section3Data) {
@@ -181,7 +181,7 @@ public class ClassificationDataService {
 					 * 1.1.c Build the Section 2 (current data)
 					 */
 
-					System.out.println("Building section 1");
+//					System.out.println("Building section 1");
 					ArrayList<ArrayList<String>> section1Data = new ArrayList<ArrayList<String>>();
 					section1Data = buildSection1.section1(currentData);
 					for (ArrayList<String> resultRowData : section1Data) {
@@ -194,7 +194,7 @@ public class ClassificationDataService {
 					}
 					section1Data.clear();
 
-					System.out.println("Building section 2");
+//					System.out.println("Building section 2");
 					ArrayList<ArrayList<String>> section2Data = new ArrayList<ArrayList<String>>();
 					section2Data = buildSection2.section2(currentData);
 					for (ArrayList<String> resultRowData : section2Data) {
@@ -215,7 +215,7 @@ public class ClassificationDataService {
 
 				else {
 
-					System.out.println("Building section 2");
+//					System.out.println("Building section 2");
 					ArrayList<ArrayList<String>> section2Data = new ArrayList<ArrayList<String>>();
 					section2Data = buildSection2.section2(currentData);
 					for (ArrayList<String> resultRowData : section2Data) {
@@ -239,7 +239,7 @@ public class ClassificationDataService {
 			 * 3. If EOF -> Build Section 3 (previous data) [last element]
 			 */
 
-			System.out.println("Building section 3");
+//			System.out.println("Building section 3");
 			ArrayList<ArrayList<String>> section3Data = new ArrayList<ArrayList<String>>();
 			section3Data = buildSection3.section3(previousData);
 			for (ArrayList<String> resultRowData : section3Data) {
