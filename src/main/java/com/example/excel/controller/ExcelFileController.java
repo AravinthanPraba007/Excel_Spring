@@ -15,5 +15,10 @@ public class ExcelFileController {
 	    public String fromToIndex() {
 	        return "multipartfile/fromtoform.html";
 	    }
+	  
+	  @GetMapping("/classificationData")
+	    public String classificationData() {
+	        return "multipartfile/classificationdataform.html";
+	    }
 	
 }
