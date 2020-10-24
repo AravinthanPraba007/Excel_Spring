@@ -65,8 +65,14 @@ public class Section2Builder {
 		headerList.add("0");
 		headerList.add("");
 		headerList.add("RCTMS-MNAME(01)");
-		headerList.add(value);
+		headerList.add(removeApostrophe(value));
 		return headerList;
+	}
+	
+	public String removeApostrophe(String data) {
+		String resultData=data.replaceAll("'", "");
+//		System.out.println("removeApostrophe "+resultData);
+		return resultData;
 	}
 	
 }

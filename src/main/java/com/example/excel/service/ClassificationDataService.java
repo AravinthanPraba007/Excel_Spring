@@ -36,6 +36,19 @@ public class ClassificationDataService {
 	Section2Builder buildSection2;
 
 	public ByteArrayInputStream loadFile(MultipartFile file) {
+		
+		// Get current size of heap in bytes
+		long heapSize = Runtime.getRuntime().totalMemory(); 
+
+		// Get maximum size of heap in bytes. The heap cannot grow beyond this size.// Any attempt will result in an OutOfMemoryException.
+		long heapMaxSize = Runtime.getRuntime().maxMemory();
+
+		 // Get amount of free memory within the heap in bytes. This size will increase // after garbage collection and decrease as new objects are created.
+		long heapFreeSize = Runtime.getRuntime().freeMemory(); 
+		
+		System.out.println("heap Size = "+heapSize);
+		System.out.println("heap max size = "+heapMaxSize);
+		System.out.println("heap free size = "+heapFreeSize);
 
 		ArrayList<MaterialData> material_datas = new ArrayList<MaterialData>();
 
@@ -75,7 +88,7 @@ public class ClassificationDataService {
 			while (rows.hasNext()) {
 				Row currentRow = rows.next();
 
-				// skip header
+				// skip header and next two column (totally ignored first 3 rows)
 				if (rowNumber < 3) {
 					rowNumber++;
 					continue;
@@ -115,9 +128,12 @@ public class ClassificationDataService {
 	}
 
 	/**
-	 * 1. Check if currentData is not equal to previousData true -> 1.1.a Check if
-	 * the read row is first ->true --> 1.a.i Build the Header ->false --> 1.a.ii
-	 * Build the Section 3 (previous data) 1.1.b Build the Section 1 (current data)
+	 * 1. Check if currentData is not equal to previousData 
+	 * true -> 1.1.a Check if the read row is first 
+	 * 	->true --> 1.a.i Build the Header 
+	 * 	->false --> 1.a.ii Build the Section 3 (previous data) 
+	 * 				1.a.iii Build The Header section
+	 * 				1.1.b Build the Section 1 (current data)
 	 * 1.1.c Build the Section 2 (current data) false -> 1.2.a Build Section
 	 * 2(current data) 2. Set previous data = current data 3. If EOF -> Build
 	 * Section 3 (previous data) [last element]
@@ -174,6 +190,16 @@ public class ClassificationDataService {
 							}
 						}
 						section3Data.clear();
+						
+//						System.out.println("Building header");
+						ArrayList<String> headerResultRowData = new ArrayList<String>();
+						headerResultRowData = buildHeader.header();
+						Row row = sheet.createRow(rowIdx++);
+						int colIdx = 0;
+						for (String rowData : headerResultRowData) {
+							row.createCell(colIdx++).setCellValue(rowData);
+						}
+						headerResultRowData.clear();
 					}
 
 					/**
