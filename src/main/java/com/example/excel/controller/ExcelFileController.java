@@ -21,4 +21,18 @@ public class ExcelFileController {
 	        return "multipartfile/classificationdataform.html";
 	    }
 	
+	  @GetMapping("/deleteProductionOrder")
+	  public String deleteProductionData() {
+		  return "multipartfile/deleteproductionorder.html";
+	  }
+	  
+	  @GetMapping("/deleteProductionOrder/withCompAllocation")
+	  public String deleteProductionWithCompAll() {
+		  return "multipartfile/deleteProdWithComp";
+	  }
+	  
+	  @GetMapping("/deleteProductionOrder/withoutCompAllocation")
+	  public String deleteProductionWithoutCompAll() {
+		  return "multipartfile/deleteProdWithoutComp";
+	  }
 }
