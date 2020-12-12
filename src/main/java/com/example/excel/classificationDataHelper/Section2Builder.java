@@ -64,7 +64,7 @@ public class Section2Builder {
 		headerList.add("");
 		headerList.add("0");
 		headerList.add("");
-		headerList.add("RCTMS-MNAME(01)");
+		headerList.add("RCTMS-MWERT(01)");
 		headerList.add(removeApostrophe(value));
 		return headerList;
 	}
